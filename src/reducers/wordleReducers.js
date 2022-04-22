@@ -1,5 +1,10 @@
 import React from 'react'
 
+export const WorldeContext = React.createContext({
+     state: initialState,
+     dispatch: () => {},
+})
+
 const initialState = {
      turn: 0,
      current: '',
@@ -46,6 +51,16 @@ const wordleReducers = () => {
      state,
      dispatch,
   }
+}
+
+const WordleProvider = ({ children }) => {
+     const { state, dispatch } = wordleReducers()
+     return (
+          <WorldeContext.Provider value={{ state, dispatch }}>
+               {children}
+          </WorldeContext.Provider>
+          
+     )
 }
 
 export default wordleReducers
