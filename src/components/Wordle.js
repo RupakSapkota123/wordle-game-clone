@@ -19,3 +19,5 @@ const Wordle = () => {
     <div>current guess - {state.current}</div>
   )
 }
+
+export default Wordle

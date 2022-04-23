@@ -7,18 +7,28 @@ import 'antd/dist/antd.css';
 import { WordleDataContext } from './context/WordleDataContext';
 import { WorldeContext } from './reducers/WordleReducers';
 import useWordle from './hook/useWordle';
+import Header from './components/Header';
 
-const { Header, Content } = Layout;
+const { Header: Headers, Content } = Layout;
 
-const StyledHeader = styled(Header)`
+const StyledHeader = styled(Headers)`
+    /* display: inline-table; */
+    display: flex;
+    align-items: center;
+
 color: #212121;
- background-color: #FDF6EC;
- font-size: 1.2rem;
+ background-color: #fff;
+ font-size: 1.5rem;
+ height: 50px;
  font-weight: 600;
- text-align: center;
- // add box-shadow bottom
-     box-shadow: 0px -1px 0px 0px #E0E0E0;
- .ant-layout-header{}
+ /* text-align: center; */
+ border-bottom: 1px solid #e8e8e8;
+ .ant-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+}
 `
 
 const StyledContent = styled(Content)`
@@ -31,6 +41,7 @@ max-width: 100%;
 `
 const StyledLayout = styled(Layout)`
 background-color: #fff;
+
 `
 const StyledCard = styled(Card)`
 width: 500px;
