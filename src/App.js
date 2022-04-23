@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import { Card, Layout } from 'antd';
 import styled from  'styled-components';
-import Wordle from './Wordle';
+import Wordle from './components/Wordle';
 import 'antd/dist/antd.css';
 import { WordleDataContext } from './context/WordleDataContext';
 import { WorldeContext } from './reducers/WordleReducers';
@@ -73,7 +73,9 @@ function App() {
 return <>{data && (
      <div>
           <StyledLayout>
-      <StyledHeader>Wordle-Clone</StyledHeader>
+      <StyledHeader>
+           <Header />
+      </StyledHeader>
       <StyledContent>{data.data && (
            <StyledCard >
                 <Card style={{width: "fit-content"}}>
