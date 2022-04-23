@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { WordleDataProvider } from './context/wordleDataContext';
-import {WordleProvider} from './reducers/wordleReducers'
+import { WordleDataProvider } from './context/WordleDataContext';
+import {WordleProvider} from './reducers/WordleReducers'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

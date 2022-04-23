@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import { Card, Layout } from 'antd';
 import styled from  'styled-components';
-import Wordle from './components/Wordle';
+import Wordle from './Wordle';
 import 'antd/dist/antd.css';
-import { WordleDataContext } from './context/wordleDataContext';
+import { WordleDataContext } from './context/WordleDataContext';
+import { WorldeContext } from './reducers/WordleReducers';
+import useWordle from './hook/useWordle';
 
 const { Header, Content } = Layout;
 
@@ -43,7 +45,13 @@ function App() {
      // const [loading, setLoading] = React.useState(false);
 
      const { state: data } = React.useContext(WordleDataContext);
+     const { state } = React.useContext(WorldeContext);
+     const {handleKeyPress} = useWordle(data);
 
+     React.useEffect(() => {
+
+     },[])
+     
      console.log('data', data);
 
 //     useEffect(() => {
@@ -69,7 +77,7 @@ return <>{data && (
       <StyledContent>{data.data && (
            <StyledCard >
                 <Card style={{width: "fit-content"}}>
-                    <h4>{data.data.word}</h4>
+                    <h4>{<Wordle />}</h4>
                 </Card>
            </StyledCard>
       )}</StyledContent>
