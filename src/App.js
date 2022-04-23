@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import { Card, Layout } from 'antd';
 import styled from  'styled-components';
+import Wordle from './components/Wordle';
 import 'antd/dist/antd.css';
+import { WordleDataContext } from './context/wordleDataContext';
 
 const { Header, Content } = Layout;
 
@@ -32,37 +34,42 @@ const StyledCard = styled(Card)`
 width: 500px;
 min-width: 500px;
 max-width: 500px;
+padding: 5px;
 `
 
 function App() {
-     const [data, setData] = React.useState(null);
-     const [error, setError] = React.useState(null);
-     const [loading, setLoading] = React.useState(false);
+     // const [data, setData] = React.useState(null);
+     // const [error, setError] = React.useState(null);
+     // const [loading, setLoading] = React.useState(false);
 
-    useEffect(() => {
-         const fetchData =  () => {
-         fetch('http://localhost:4000/solutions')
-         .then(res => res.json())
-         .then((json) => {
-               const randomData = json[Math.floor(Math.random() * json.length)];
-               setData(randomData);
-               console.log('randomData', randomData);
-         })
-         .catch(err => {
-               setError(err);
-               setLoading(false);
-         })
-     }
-     fetchData();
-    }, []);
+     const { state: data } = React.useContext(WordleDataContext);
+
+     console.log('data', data);
+
+//     useEffect(() => {
+//          const fetchData =  () => {
+//          fetch('http://localhost:4000/solutions')
+//          .then(res => res.json())
+//          .then((json) => {
+//                const randomData = json[Math.floor(Math.random() * json.length)];
+//                setData(randomData);
+//                console.log('randomData', randomData);
+//          })
+//          .catch(err => {
+//                setError(err);
+//                setLoading(false);
+//          })
+//      }
+//      fetchData();
+//     }, []);
 return <>{data && (
      <div>
           <StyledLayout>
       <StyledHeader>Wordle-Clone</StyledHeader>
-      <StyledContent>{data && (
+      <StyledContent>{data.data && (
            <StyledCard >
                 <Card style={{width: "fit-content"}}>
-                    <h4>{data.word}</h4>
+                    <h4>{data.data.word}</h4>
                 </Card>
            </StyledCard>
       )}</StyledContent>

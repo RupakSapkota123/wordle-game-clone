@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { WordleDataProvider } from './context/wordleDataContext';
+import {WordleProvider} from './reducers/wordleReducers'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<React.StrictMode>
+<WordleDataProvider>
+  <WordleProvider>
 <App />
-</React.StrictMode>
+</WordleProvider>
+</WordleDataProvider>
 );
 
 

@@ -1,13 +1,8 @@
 import React from 'react'
+import { WorldeContext } from '../reducers/wordleReducers'
 
 const useWordle = (data) => {
-     const [turn , setTurn] = React.useState(0);
-    const [current , setCurrent] = React.useState('');
-    const [guesses, setGuesses] = React.useState([]); // each guess is an array of letters
-    const [history , setHistory] = React.useState([]); // each guess is an array of letters
-    const [isCorrect , setIsCorrect] = React.useState(false);
-
-     
+     const { state, dispatch } = React.useContext(WorldeContext)
      
      // array of letter objects of format
      const formatGuess = (guess) => {

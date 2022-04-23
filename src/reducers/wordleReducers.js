@@ -1,10 +1,5 @@
 import React from 'react'
 
-export const WorldeContext = React.createContext({
-     state: initialState,
-     dispatch: () => {},
-})
-
 const initialState = {
      turn: 0,
      current: '',
@@ -12,6 +7,11 @@ const initialState = {
      history: [],
      isCorrect: false,
 }
+export const WorldeContext = React.createContext({
+     state: initialState,
+     dispatch: () => {},
+})
+
 
 const wordle = (state = initialState, action) => {
      switch (action.type) {
@@ -45,7 +45,7 @@ const wordle = (state = initialState, action) => {
      }
 }
 
-const wordleReducers = () => {
+const WordleReducers = () => {
      const [state, dispatch] = React.useReducer(wordle, initialState)
   return {
      state,
@@ -53,8 +53,8 @@ const wordleReducers = () => {
   }
 }
 
-const WordleProvider = ({ children }) => {
-     const { state, dispatch } = wordleReducers()
+export const WordleProvider = ({ children }) => {
+     const { state, dispatch } = WordleReducers()
      return (
           <WorldeContext.Provider value={{ state, dispatch }}>
                {children}
@@ -63,4 +63,4 @@ const WordleProvider = ({ children }) => {
      )
 }
 
-export default wordleReducers
+export default WordleReducers
