@@ -21,7 +21,6 @@ const wordle = (state = initialState, action) => {
           turn: action.turn,
           }
      case 'SET_CURRENT':
-          console.log('current', state.current)
           return {
           ...state,
           current: action.current,
